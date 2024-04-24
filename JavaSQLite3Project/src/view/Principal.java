@@ -34,7 +34,9 @@ public class Principal {
 				System.out.println();
 				ProdutoController pc = new ProdutoController();
 				ArrayList<Produto> produtos = pc.ver();
-				
+				System.out.println("---------------------------------------");
+				System.out.println("          PRODUTOS CADASTRADOS         ");
+				System.out.println("---------------------------------------");
 				System.out.println("|ID |NOME |DESCRIÇÃO |PREÇO |QUANTIDADE |");
 				for (Produto p : produtos) {
 					System.out.println("-----------------------------------------");
@@ -46,9 +48,18 @@ public class Principal {
 				int id = ler.nextInt();
 				ProdutoController pc = new ProdutoController();
 				Produto p = pc.buscar(id);
-				System.out.println("|ID |NOME |DESCRIÇÃO |PREÇO |QUANTIDADE |");
-				System.out.println("|"+p.getId()+"|"+p.getNome()+"|"+p.getDescricao()+"|"+p.getPreco()+"|"+p.getQuantidade()+"|");
-				System.out.println("-----------------------------------------");
+				if (p == null) {
+					System.out.println("---------------------------------------");
+					System.out.println("        CONSULTA MAL SUCESSIDA!        ");
+					System.out.println("---------------------------------------");
+				}else {
+					System.out.println("---------------------------------------");
+					System.out.println("      CONSULTA FEITA COM SUCESSO!      ");
+					System.out.println("---------------------------------------");
+					System.out.println("|ID |NOME |DESCRIÇÃO |PREÇO |QUANTIDADE |");
+					System.out.println("|"+p.getId()+"|"+p.getNome()+"|"+p.getDescricao()+"|"+p.getPreco()+"|"+p.getQuantidade()+"|");
+					System.out.println("-----------------------------------------");
+				}
 			}else if(op == 3) {
 				Produto produto = new Produto();
 				System.out.println("---------------------------------------");
@@ -64,9 +75,9 @@ public class Principal {
 				System.out.print("Quantidade:");
 				produto.setQuantidade(ler.nextInt());
 				System.out.println("---------------------------------------");
-				ProdutoController pc3 = new ProdutoController();
-				boolean res = pc3.cadastrar(produto);
-				if (res) {
+				ProdutoController pc = new ProdutoController();
+				boolean ok = pc.cadastrar(produto);
+				if (ok) {
 					System.out.println("    PRODUTO CADASTRADO COM SUCESSO!    ");
 					System.out.println("---------------------------------------");
 				}else {
@@ -74,6 +85,7 @@ public class Principal {
 					System.out.println("---------------------------------------");
 				}
 			}else if(op == 4) {
+				
 				
 			}else if(op == 5) {
 				
