@@ -85,7 +85,31 @@ public class Principal {
 					System.out.println("---------------------------------------");
 				}
 			}else if(op == 4) {
-				
+				Produto produto = new Produto();
+				System.out.println("---------------------------------------");
+				System.out.println("             EDITAR PRODUTO            ");
+				System.out.println("---------------------------------------");
+				System.out.print("ID:");
+				produto.setId(ler.nextInt());
+				ler.nextLine();
+				System.out.print("Nome:");
+				produto.setNome(ler.nextLine());
+				System.out.print("Descrição:");
+				produto.setDescricao(ler.nextLine());
+				System.out.print("Preço:");
+				produto.setPreco(ler.nextDouble());
+				System.out.print("Quantidade:");
+				produto.setQuantidade(ler.nextInt());
+				System.out.println("---------------------------------------");
+				ProdutoController pc = new ProdutoController();
+				boolean ok = pc.editar(produto);
+				if (ok) {
+					System.out.println("     PRODUTO EDITADO COM SUCESSO!      ");
+					System.out.println("---------------------------------------");
+				}else {
+					System.out.println("        ERRO AO EDITAR PRODUTO!        ");
+					System.out.println("---------------------------------------");
+				}
 				
 			}else if(op == 5) {
 				
