@@ -30,59 +30,58 @@ public class Principal {
 			menu();
 			int op = ler.nextInt();
 			
-			switch(op) {
+			if (op == 1) {
+				System.out.println();
+				ProdutoController pc = new ProdutoController();
+				ArrayList<Produto> produtos = pc.ver();
 				
-				case 0:
-				
-				case 1:
-					System.out.println();
-					ProdutoController pc1 = new ProdutoController();
-					ArrayList<Produto> produtos = pc1.verProdutos();
-					
-					System.out.println("|ID |NOME |DESCRIÇÃO |PREÇO |QUANTIDADE |");
-					for (Produto p : produtos) {
-						System.out.println("-----------------------------------------");
-						System.out.println("|"+p.getId()+"|"+p.getNome()+"|"+p.getDescricao()+"|"+p.getPreco()+"|"+p.getQuantidade()+"|");
-					}
+				System.out.println("|ID |NOME |DESCRIÇÃO |PREÇO |QUANTIDADE |");
+				for (Produto p : produtos) {
 					System.out.println("-----------------------------------------");
-					break;
-				case 2:
-					break;
-				case 3:
-					Produto produto = new Produto();
+					System.out.println("|"+p.getId()+"|"+p.getNome()+"|"+p.getDescricao()+"|"+p.getPreco()+"|"+p.getQuantidade()+"|");
+				}
+				System.out.println("-----------------------------------------");
+			}else if(op == 2) {
+				System.out.print("Digite o código do produto que deseja procurar: ");
+				int id = ler.nextInt();
+				ProdutoController pc = new ProdutoController();
+				Produto p = pc.buscar(id);
+				System.out.println("|ID |NOME |DESCRIÇÃO |PREÇO |QUANTIDADE |");
+				System.out.println("|"+p.getId()+"|"+p.getNome()+"|"+p.getDescricao()+"|"+p.getPreco()+"|"+p.getQuantidade()+"|");
+				System.out.println("-----------------------------------------");
+			}else if(op == 3) {
+				Produto produto = new Produto();
+				System.out.println("---------------------------------------");
+				System.out.println("           CADASTRAR PRODUTO           ");
+				System.out.println("---------------------------------------");
+				ler.nextLine();
+				System.out.print("Nome:");
+				produto.setNome(ler.nextLine());
+				System.out.print("Descrição:");
+				produto.setDescricao(ler.nextLine());
+				System.out.print("Preço:");
+				produto.setPreco(ler.nextDouble());
+				System.out.print("Quantidade:");
+				produto.setQuantidade(ler.nextInt());
+				System.out.println("---------------------------------------");
+				ProdutoController pc3 = new ProdutoController();
+				boolean res = pc3.cadastrar(produto);
+				if (res) {
+					System.out.println("    PRODUTO CADASTRADO COM SUCESSO!    ");
 					System.out.println("---------------------------------------");
-					System.out.println("           CADASTRAR PRODUTO           ");
+				}else {
+					System.out.println("      ERRO AO CADASTRAR PRODUTO!       ");
 					System.out.println("---------------------------------------");
-					ler.nextLine();
-					System.out.print("Nome:");
-					produto.setNome(ler.nextLine());
-					System.out.print("Descrição:");
-					produto.setDescricao(ler.nextLine());
-					System.out.print("Preço:");
-					produto.setPreco(ler.nextDouble());
-					System.out.print("Quantidade:");
-					produto.setQuantidade(ler.nextInt());
-					System.out.println("---------------------------------------");
-					ProdutoController pc3 = new ProdutoController();
-					boolean res = pc3.cadastrar(produto);
-					if (res) {
-						System.out.println("    PRODUTO CADASTRADO COM SUCESSO!    ");
-						System.out.println("---------------------------------------");
-					}else {
-						System.out.println("      ERRO AO CADASTRAR PRODUTO!       ");
-						System.out.println("---------------------------------------");
-					}
-					break;
-				case 4:
-					break;
-				case 5:
-					break;
-				case 6:
-					Sobre sobre = new Sobre();
-					sobre.sobre();
-					break;
-				default:
-					open = false;
+				}
+			}else if(op == 4) {
+				
+			}else if(op == 5) {
+				
+			}else if(op == 6) {
+				Sobre sobre = new Sobre();
+				sobre.sobre();
+			}else {
+				open = false;
 			}
 		}
 		
