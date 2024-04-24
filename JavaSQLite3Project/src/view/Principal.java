@@ -29,7 +29,6 @@ public class Principal {
 		while (open) {
 			menu();
 			int op = ler.nextInt();
-			
 			if (op == 1) {
 				System.out.println();
 				ProdutoController pc = new ProdutoController();
@@ -110,9 +109,28 @@ public class Principal {
 					System.out.println("        ERRO AO EDITAR PRODUTO!        ");
 					System.out.println("---------------------------------------");
 				}
-				
 			}else if(op == 5) {
 				
+				System.out.print("Digite o código do produto que deseja remover: ");
+				int id = ler.nextInt();
+				ProdutoController pc = new ProdutoController();
+				System.out.println("DIGITE 1 PARA SIM E 0 PARA NÃO!");
+				System.out.print("Tem certeza que deseja remover? ");
+				int resp = ler.nextInt();
+				System.out.println("---------------------------------------");
+				if (resp == 1) {
+					boolean ok = pc.remover(id);
+					if (ok) {
+						System.out.println("     PRODUTO REMOVIDO COM SUCESSO!     ");
+						System.out.println("---------------------------------------");
+					}else {
+						System.out.println("        ERRO AO REMOVER PRODUTO!       ");
+						System.out.println("---------------------------------------");
+					}
+				}else {
+					System.out.println("        OPERAÇÃO NÃO REALIZADA!        ");
+					System.out.println("---------------------------------------");
+				}
 			}else if(op == 6) {
 				Sobre sobre = new Sobre();
 				sobre.sobre();
