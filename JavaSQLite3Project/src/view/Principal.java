@@ -42,7 +42,7 @@ public class Principal {
 					System.out.println("|ID |NOME |DESCRIÇÃO |PREÇO |QUANTIDADE |");
 					for (Produto p : produtos) {
 						System.out.println("-----------------------------------------");
-						System.out.println("|"+p.getId()+" | "+p.getNome()+" | "+p.getDescricao()+" | "+p.getPreco()+" | "+p.getQuantidade()+" | ");
+						System.out.println("|"+p.getId()+"|"+p.getNome()+"|"+p.getDescricao()+"|"+p.getPreco()+"|"+p.getQuantidade()+"|");
 					}
 					System.out.println("-----------------------------------------");
 					break;

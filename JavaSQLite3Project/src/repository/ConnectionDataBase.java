@@ -11,7 +11,7 @@ public class ConnectionDataBase {
 	 
 	public static boolean connect() {
         try {
-        	String url = "jdbc:sqlite:db/bancodedados.dat";
+        	String url = "jdbc:sqlite:JavaSQLite3Project/db/bancodedados.dat";
             conn = DriverManager.getConnection(url);
             return true;
         } catch (SQLException e) {
